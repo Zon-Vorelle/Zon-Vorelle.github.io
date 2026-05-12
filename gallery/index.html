@@ -6,149 +6,6 @@
     <meta name="description" content="A photo and video gallery celebrating pangolins in the wild.">
     <title>Gallery | Pangolin Fan Club</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <style>
-      /* ── Photo Grid ── */
-      .photo-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 16px;
-        margin-top: 20px;
-      }
-
-      .photo-card {
-        background: white;
-        border: 1px solid #c8d8b0;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        cursor: pointer;
-        transition: transform 0.15s, box-shadow 0.15s;
-      }
-
-      .photo-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-      }
-
-      .photo-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 0;
-        display: block;
-      }
-
-      .photo-card figcaption {
-        padding: 10px 14px;
-        font-size: 0.88rem;
-        color: #555;
-        line-height: 1.4;
-      }
-
-      /* ── Lightbox ── */
-      #lightbox {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.85);
-        z-index: 1000;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 24px;
-      }
-
-      #lightbox.open {
-        display: flex;
-      }
-
-      #lightbox img {
-        max-width: 90vw;
-        max-height: 80vh;
-        object-fit: contain;
-        border-radius: 6px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-      }
-
-      #lightbox-caption {
-        color: white;
-        margin-top: 14px;
-        font-size: 0.95rem;
-        text-align: center;
-        max-width: 600px;
-      }
-
-      #lightbox-close {
-        position: absolute;
-        top: 20px;
-        right: 28px;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-        line-height: 1;
-      }
-
-      #lightbox-close:hover {
-        color: #c8d8b0;
-      }
-
-      /* ── Video Section ── */
-      .video-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 24px;
-        margin-top: 20px;
-      }
-
-      .video-card {
-        background: white;
-        border: 1px solid #c8d8b0;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      }
-
-      .video-card .video-wrapper {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 */
-        height: 0;
-        overflow: hidden;
-      }
-
-      .video-card .video-wrapper iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-
-      .video-card .video-info {
-        padding: 12px 16px;
-      }
-
-      .video-card .video-info h3 {
-        font-size: 1rem;
-        margin-bottom: 4px;
-      }
-
-      .video-card .video-info p {
-        font-size: 0.85rem;
-        color: #555;
-      }
-
-      @media (max-width: 640px) {
-        .photo-grid {
-          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        }
-        .photo-card img {
-          height: 140px;
-        }
-      }
-    </style>
   </head>
   <body>
     <header>
@@ -248,17 +105,15 @@
 
       </div>
 
-      <!-- ==================== VIDEO SECTION ==================== -->
+      <!-- Video Section -->
       <h2 style="margin-top: 48px;">Videos</h2>
       <p>Watch pangolins in the wild and learn more about conservation efforts.</p>
 
       <div class="video-grid">
 
         <!--
-          VIDEO SLOT 1
-          Suggested search: "Pangolins 101 National Geographic" on YouTube
-          Copy the video ID from the URL (youtube.com/watch?v=XXXXXXXXXXX)
-          and replace REPLACE_WITH_VIDEO_ID_1 below.
+          National Geographic: Pangolins 101
+          YouTube ID: DqC3ieJJlFM
         -->
         <div class="video-card">
           <div class="video-wrapper">
@@ -276,9 +131,8 @@
         </div>
 
         <!--
-          VIDEO SLOT 2
-          Suggested search: "BBC Earth pangolin" on YouTube (Planet Earth II or similar)
-          Replace REPLACE_WITH_VIDEO_ID_2 below.
+          Real Science: Are Pangolins About to Go Extinct?
+          YouTube ID: q1O5B8I6cXs
         -->
         <div class="video-card">
           <div class="video-wrapper">
@@ -296,10 +150,8 @@
         </div>
 
         <!--
-          VIDEO SLOT 3
-          Suggested search: "pangolin conservation trafficking" on YouTube
-          (WWF, 60 Minutes, or similar documentary clip)
-          Replace REPLACE_WITH_VIDEO_ID_3 below.
+          Ze Frank: True Facts — The Pangolin
+          YouTube ID: mbnBYh-BJ1g
         -->
         <div class="video-card">
           <div class="video-wrapper">
@@ -317,7 +169,7 @@
         </div>
 
       </div>
-      <!-- ==================== END VIDEOS ==================== -->
+      <!-- End Video Section -->
 
     </main>
 
@@ -336,6 +188,7 @@
     <script>
       "use strict";
 
+      // Opens the lightbox overlay and displays the clicked photo at full size
       function openLightbox(card) {
         var img = card.querySelector("img");
         var lbImg = document.getElementById("lightbox-img");
@@ -349,6 +202,7 @@
         document.body.style.overflow = "hidden";
       }
 
+      // Closes the lightbox and restores normal page scrolling
       function closeLightbox() {
         var lb = document.getElementById("lightbox");
         lb.classList.remove("open");
